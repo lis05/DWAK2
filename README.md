@@ -1,21 +1,22 @@
-DWAK2 - An improved version of DWAK CPU architecture
+# DWAK2 - An improved version of DWAK CPU architecture
+
 DWAK2 is 64 bit. Therefore, all instructions are 64bit, and one word is 64bits.
 Due to the simulation software limitations, addresses will be 24bit.
 
 
-TERMINOLOGY:
-1. reg - means a register index. 
-    Can be one of: R0, R1, R2, R3, CF, QT, RM, SB, SH, IP
+## TERMINOLOGY
+- reg - means a register index.
+    Can be one of: `R0`, `R1`, `R2`, `R3`, `CF`, `QT`, `RM`, `SB`, `SH`, `IP`
 
-2. [mem] - means a memory address.
+- [mem] - means a memory address.
     Can be one of: [const], [reg]
 
-3. const - means a constant value.
+- const - means a constant value.
     Can be any hex, decimal, or binary number.
 
 
-REGISTERS:
-1. General usage registers R0, R1, R2, R3.
+## REGISTERS
+### General usage registers R0, R1, R2, R3.
     Used in general computations.
     
     R0 has register index TODO, size of 64bits.

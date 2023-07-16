@@ -132,6 +132,13 @@ Registers and RAM return the requested information instantly. The chip receives 
 When the chip is done reading, it instantly calculates the result data and sends it to registers and RAM to store.
 Data is stored at the next CPU cycle.
 
+
+## TODO
+- [ ] Design MOV
+- [ ] Design MOV
+- [ ] Design MOV
+- [ ] Design MOV
+- [ ] Design MOV
        
     
         

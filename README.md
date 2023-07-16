@@ -25,12 +25,13 @@ Used in general computations.
 - R3 has register index TODO size of 64bits.
 
 ### Conditional flag register CF.
-    Contains a value that indicates the result of the last CMP instruction.
+Contains a value that indicates the result of the last CMP instruction.
+
         0 means "equal", 1 means "not equal",
         2 means "less", 3 means "less equal",
         4 means "greater", 5 means "greater equal".
         
-    CF has register index TODO, size of 3bits.
+- CF has register index TODO, size of 3bits.
 
 ### Integer division registers QT, RM.
     Used in DIV instruction to store the quotient in QT and the remainder in RM.

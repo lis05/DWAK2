@@ -135,28 +135,51 @@ Data is stored at the next CPU cycle.
 
 ## TODO
 - [ ] Design `MOV`
+- [ ] Implement `MOV`
 - [ ] Design `ADD`
+- [ ] Implement `ADD`
 - [ ] Design `SUB`
+- [ ] Implement `SUB`
 - [ ] Design `MUL`
+- [ ] Implement `MUL`
 - [ ] Design `DIV`
+- [ ] Implement `DIV`
 - [ ] Design `OR`
+- [ ] Implement `OR`
 - [ ] Design `AND`
+- [ ] Implement `AND`
 - [ ] Design `XOR`
+- [ ] Implement `XOR`
 - [ ] Design `NOT`
+- [ ] Implement `NOT`
 - [ ] Design `SHL`
+- [ ] Implement `SHL`
 - [ ] Design `SHR`
+- [ ] Implement `SHR`
 - [ ] Design `CMP`
+- [ ] Implement `CMP`
 - [ ] Design `JMP`
+- [ ] Implement `JMP`
 - [ ] Design `JE`
+- [ ] Implement `JE`
 - [ ] Design `JNE`
+- [ ] Implement `JNE`
 - [ ] Design `JL`
+- [ ] Implement `JL`
 - [ ] Design `JLT`
+- [ ] Implement `JLT`
 - [ ] Design `JG`
+- [ ] Implement `JG`
 - [ ] Design `JGT`
+- [ ] Implement `JGT`
 - [ ] Design `PUSH`
+- [ ] Implement `PUSH`
 - [ ] Design `POP`
+- [ ] Implement `POP`
 - [ ] Design `CALL`
+- [ ] Implement `CALL`
 - [ ] Design `RET`
+- [ ] Implement `RET`
 
        
     

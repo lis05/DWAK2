@@ -134,29 +134,29 @@ Data is stored at the next CPU cycle.
 
 
 ## TODO
-- [ ] Design MOV
-- [ ] Design ADD
-- [ ] Design SUB
-- [ ] Design MUL
-- [ ] Design DIV
-- [ ] Design OR
-- [ ] Design AND
-- [ ] Design XOR
-- [ ] Design NOT
-- [ ] Design SHL
-- [ ] Design SHR
-- [ ] Design CMP
-- [ ] Design JMP
-- [ ] Design JE
-- [ ] Design JNE
-- [ ] Design JL
-- [ ] Design JLT
-- [ ] Design JG
-- [ ] Design JGT
-- [ ] Design PUSH
-- [ ] Design POP
-- [ ] Design CALL
-- [ ] Design RET
+- [ ] Design `MOV`
+- [ ] Design `ADD`
+- [ ] Design `SUB`
+- [ ] Design `MUL`
+- [ ] Design `DIV`
+- [ ] Design `OR`
+- [ ] Design `AND`
+- [ ] Design `XOR`
+- [ ] Design `NOT`
+- [ ] Design `SHL`
+- [ ] Design `SHR`
+- [ ] Design `CMP`
+- [ ] Design `JMP`
+- [ ] Design `JE`
+- [ ] Design `JNE`
+- [ ] Design `JL`
+- [ ] Design `JLT`
+- [ ] Design `JG`
+- [ ] Design `JGT`
+- [ ] Design `PUSH`
+- [ ] Design `POP`
+- [ ] Design `CALL`
+- [ ] Design `RET`
 
        
     

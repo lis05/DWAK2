@@ -53,12 +53,11 @@ Points to the next instruction that has to be executed. Shouldn't be directly ch
 
 ## INSTRUCTIONS
 ### 1. MOV
+Moves data from one location to another.
+Can move data to registers or memory.
+Can move data from registers, memory, or move constant values. However, can't move data from memory to memory.
 
-    Moves data from one location to another.
-    Can move data to registers or memory.
-    Can move data from registers, memory, or move constant values. However, can't move data from memory to memory.
-
-    Syntax:
+#### Syntax:
     ```
         MOV reg, reg        (opcode TODO)
         MOV reg, [mem]      (opcode TODO)
@@ -66,7 +65,7 @@ Points to the next instruction that has to be executed. Shouldn't be directly ch
         MOV [mem], reg      (opcode TODO)
         MOV [mem], const    (opcode TODO)
     ```
-    Binary representation
+#### Binary representation
 
     ```
     MOV reg, reg

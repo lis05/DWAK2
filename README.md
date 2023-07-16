@@ -32,19 +32,19 @@ Due to the simulation software limitations, addresses will be 24bit.
         
     CF has register index TODO, size of 3bits.
 
-3. Integer division registers QT, RM.
+### Integer division registers QT, RM.
     Used in DIV instruction to store the quotient in QT and the remainder in RM.
     
     QT has register index TODO, size of 64bits.
     RM has register index TODO, size of 64bits.
 
-4. Stack registers SB, SH.
+### Stack registers SB, SH.
     Used in stack operations. SB points to the base of the stack, and SH points to the head of the stack. 
     
     SB has register index TODO, size of 64bits.
     SH has register index TODO, size of 64bits.
     
-5. Instruction pointer register IP.
+### Instruction pointer register IP.
     Points to the next instruction that has to be executed. Shouldn't be directly changed.
     
     IP has register index TODO, size of 64bits.

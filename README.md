@@ -135,7 +135,6 @@ Data is stored at the next CPU cycle.
 
 ## TODO
 - [ ] Design MOV
-
 - [ ] Design ADD
 - [ ] Design SUB
 - [ ] Design MUL
@@ -146,7 +145,6 @@ Data is stored at the next CPU cycle.
 - [ ] Design NOT
 - [ ] Design SHL
 - [ ] Design SHR
-
 - [ ] Design CMP
 - [ ] Design JMP
 - [ ] Design JE
@@ -155,7 +153,6 @@ Data is stored at the next CPU cycle.
 - [ ] Design JLT
 - [ ] Design JG
 - [ ] Design JGT
-
 - [ ] Design PUSH
 - [ ] Design POP
 - [ ] Design CALL

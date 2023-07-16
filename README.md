@@ -51,8 +51,8 @@ Points to the next instruction that has to be executed. Shouldn't be directly ch
 - IP has register index TODO, size of 64bits.
 
 
-# INSTRUCTIONS
-1. MOV
+## INSTRUCTIONS
+### 1. MOV
 
     Moves data from one location to another.
     Can move data to registers or memory.
@@ -66,8 +66,7 @@ Points to the next instruction that has to be executed. Shouldn't be directly ch
         MOV [mem], reg      (opcode TODO)
         MOV [mem], const    (opcode TODO)
     ```
-    
-    In binary:
+    Binary representation
 
     ```
     MOV reg, reg
@@ -95,45 +94,44 @@ Points to the next instruction that has to be executed. Shouldn't be directly ch
         32-63   unused
         
         0-63    constant (second argument)
-    ``````
+    ```
 
-MEMORY:
-    1. Instruction memory - 16 words.
-        Contains instruction and data that has to be executed. Filled in fetch part of the cycle.
+## MEMORY:
+### 1. Instruction memory - 16 words.
+Contains instruction and data that has to be executed. Filled in fetch part of the cycle.
     
-    2. Program ROM - 2^24 words.
-        Contains the initial program. When DWAK starts, the program gets loaded into RAM at address 0.
+### 2. Program ROM - 2^24 words.
+Contains the initial program. When DWAK starts, the program gets loaded into RAM at address 0.
     
-    3. RAM - 2^24 words.
-        Random Access Memory. The initial program is loaded at address 0.
-        
-        Memory at the end of RAM is used for external devices. TODO(like VGA memory)
+### 3. RAM - 2^24 words.
+Random Access Memory. The initial program is loaded at address 0.       
+Memory at the end of RAM is used for external devices. TODO(like VGA memory)
     
 
-WHAT HAPPENS WHEN DWAK BOOTS:
-    The initial program in the ROM gets loaded into RAM at address 0. It starts executing the instructions
+## WHAT HAPPENS WHEN DWAK BOOTS:
+The initial program in the ROM gets loaded into RAM at address 0. It starts executing the instructions
 
 
-WHAT HAPPENS AFTER DWAK BOOTS:
-    CPU performs a CPU cycle.
-    This happens in two stages.
+## WHAT HAPPENS AFTER DWAK BOOTS:
+CPU performs a CPU cycle.
+This happens in two stages.
 
-    1. Fetch:
-        CPU reads the next instruction. It loads it, as well as its data (if opcode requires), into the instruction memory. 
-        Each word is read in one CPU cycle.
-        At the end of the Fetch stage, IP points to the next instruction.
-    2. Execute:
-        CPU reads the content of the instruction memory, and sends its content to the right instruction chip. 
-        The chip then executes the instruction in one CPU cycle. 
-        All instruction chips have access to registers and RAM.
+### 1. Fetch
+CPU reads the next instruction. It loads it, as well as its data (if opcode requires), into the instruction memory. 
+Each word is read in one CPU cycle.
+At the end of the Fetch stage, IP points to the next instruction.
+### 2. Execute
+CPU reads the content of the instruction memory, and sends its content to the right instruction chip. 
+The chip then executes the instruction in one CPU cycle. 
+All instruction chips have access to registers and RAM.
 
 
-HOW INSTRUCTION CHIPS WORK:
-    Each chip is given its input data that came from the instruction. 
-    If chip has to read some data from registers or RAM, it does it by sending the request to the output pins, which instantly deliver the request. 
-    Registers and RAM return the requested information instantly. The chip receives it. If now it has to read some more info - the process repeats.
-    When the chip is done reading, it instantly calculates the result data and sends it to registers and RAM to store.
-    Data is stored at the next CPU cycle.
+## HOW INSTRUCTION CHIPS WORK:
+Each chip is given its input data that came from the instruction. 
+If chip has to read some data from registers or RAM, it does it by sending the request to the output pins, which instantly deliver the request. 
+Registers and RAM return the requested information instantly. The chip receives it. If now it has to read some more info - the process repeats.
+When the chip is done reading, it instantly calculates the result data and sends it to registers and RAM to store.
+Data is stored at the next CPU cycle.
 
        
     

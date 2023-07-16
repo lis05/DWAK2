@@ -59,11 +59,11 @@ Can move data from registers, memory, or move constant values. However, can't mo
 
 #### Syntax:
 ```
-    MOV reg, reg        (opcode TODO)
-    MOV reg, [mem]      (opcode TODO)
-    MOV reg, const      (opcode TODO)
-    MOV [mem], reg      (opcode TODO)
-    MOV [mem], const    (opcode TODO)
+MOV reg, reg        (opcode TODO)
+MOV reg, [mem]      (opcode TODO)
+MOV reg, const      (opcode TODO)
+MOV [mem], reg      (opcode TODO)
+MOV [mem], const    (opcode TODO)
 ```
 #### Binary representation
 

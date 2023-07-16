@@ -9,7 +9,7 @@ Due to the simulation software limitations, addresses will be 24bit.
     Can be one of: `R0`, `R1`, `R2`, `R3`, `CF`, `QT`, `RM`, `SB`, `SH`, `IP`
 
 - [mem] - means a memory address.
-    Can be one of: [const], [reg]
+    Can be one of: `[const]`, `[reg]`
 
 - const - means a constant value.
     Can be any hex, decimal, or binary number.
@@ -24,7 +24,7 @@ Due to the simulation software limitations, addresses will be 24bit.
     R2 has register index TODO, size of 64bits.
     R3 has register index TODO size of 64bits.
 
-2. Conditional flag register CF.
+### Conditional flag register CF.
     Contains a value that indicates the result of the last CMP instruction.
         0 means "equal", 1 means "not equal",
         2 means "less", 3 means "less equal",

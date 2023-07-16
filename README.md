@@ -34,36 +34,42 @@ Contains a value that indicates the result of the last CMP instruction.
 - CF has register index TODO, size of 3bits.
 
 ### Integer division registers QT, RM.
-    Used in DIV instruction to store the quotient in QT and the remainder in RM.
+Used in DIV instruction to store the quotient in QT and the remainder in RM.
     
-    QT has register index TODO, size of 64bits.
-    RM has register index TODO, size of 64bits.
+- QT has register index TODO, size of 64bits.
+- RM has register index TODO, size of 64bits.
 
 ### Stack registers SB, SH.
-    Used in stack operations. SB points to the base of the stack, and SH points to the head of the stack. 
+Used in stack operations. SB points to the base of the stack, and SH points to the head of the stack. 
     
-    SB has register index TODO, size of 64bits.
-    SH has register index TODO, size of 64bits.
+- SB has register index TODO, size of 64bits.
+- SH has register index TODO, size of 64bits.
     
 ### Instruction pointer register IP.
-    Points to the next instruction that has to be executed. Shouldn't be directly changed.
+Points to the next instruction that has to be executed. Shouldn't be directly changed.
     
-    IP has register index TODO, size of 64bits.
+- IP has register index TODO, size of 64bits.
 
 
-INSTRUCTIONS:
+# INSTRUCTIONS
 1. MOV
+
     Moves data from one location to another.
     Can move data to registers or memory.
     Can move data from registers, memory, or move constant values. However, can't move data from memory to memory.
 
     Syntax:
+    ```
         MOV reg, reg        (opcode TODO)
         MOV reg, [mem]      (opcode TODO)
         MOV reg, const      (opcode TODO)
         MOV [mem], reg      (opcode TODO)
         MOV [mem], const    (opcode TODO)
+    ```
+    
+    In binary:
 
+    ```
     MOV reg, reg
         0-7     opcode TODO
         8-15    register index (first argument)
@@ -89,7 +95,7 @@ INSTRUCTIONS:
         32-63   unused
         
         0-63    constant (second argument)
-
+    ``````
 
 MEMORY:
     1. Instruction memory - 16 words.

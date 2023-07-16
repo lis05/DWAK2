@@ -17,12 +17,12 @@ Due to the simulation software limitations, addresses will be 24bit.
 
 ## REGISTERS
 ### General usage registers R0, R1, R2, R3.
-    Used in general computations.
-    
-    R0 has register index TODO, size of 64bits.
-    R1 has register index TODO, size of 64bits.
-    R2 has register index TODO, size of 64bits.
-    R3 has register index TODO size of 64bits.
+Used in general computations.
+
+- R0 has register index TODO, size of 64bits.
+- R1 has register index TODO, size of 64bits.
+- R2 has register index TODO, size of 64bits.
+- R3 has register index TODO size of 64bits.
 
 ### Conditional flag register CF.
     Contains a value that indicates the result of the last CMP instruction.

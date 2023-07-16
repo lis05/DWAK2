@@ -58,42 +58,42 @@ Can move data to registers or memory.
 Can move data from registers, memory, or move constant values. However, can't move data from memory to memory.
 
 #### Syntax:
-    ```
-        MOV reg, reg        (opcode TODO)
-        MOV reg, [mem]      (opcode TODO)
-        MOV reg, const      (opcode TODO)
-        MOV [mem], reg      (opcode TODO)
-        MOV [mem], const    (opcode TODO)
-    ```
+```
+    MOV reg, reg        (opcode TODO)
+    MOV reg, [mem]      (opcode TODO)
+    MOV reg, const      (opcode TODO)
+    MOV [mem], reg      (opcode TODO)
+    MOV [mem], const    (opcode TODO)
+```
 #### Binary representation
 
-    ```
-    MOV reg, reg
-        0-7     opcode TODO
-        8-15    register index (first argument)
-        16-23   register index (second argument)
-        24-63   unused
-    MOV reg, mem
-        0-7     opcode TODO
-        8-15    register index (first argument)
-        16-39   memory address (second argument)
-    MOV reg, const
-        0-7     opcode TODO
-        8-15    register index (first argument)
-        16-63   unused
+```
+MOV reg, reg
+    0-7     opcode TODO
+    8-15    register index (first argument)
+    16-23   register index (second argument)
+    24-63   unused
+MOV reg, mem
+    0-7     opcode TODO
+    8-15    register index (first argument)
+    16-39   memory address (second argument)
+MOV reg, const
+    0-7     opcode TODO
+    8-15    register index (first argument)
+    16-63   unused
 
-        0-63    constant (second argument)
-    MOV mem, reg
-        0-7     opcode TODO
-        8-31    memory address (first argument)
-        32-39   register index (second argument)
-    MOV mem, const
-        0-7     opcode TODO
-        8-31    memory address (first argument)
-        32-63   unused
-        
-        0-63    constant (second argument)
-    ```
+    0-63    constant (second argument)
+MOV mem, reg
+    0-7     opcode TODO
+    8-31    memory address (first argument)
+    32-39   register index (second argument)
+MOV mem, const
+    0-7     opcode TODO
+    8-31    memory address (first argument)
+    32-63   unused
+    
+    0-63    constant (second argument)
+```
 
 ## MEMORY:
 ### 1. Instruction memory - 16 words.

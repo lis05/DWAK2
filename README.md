@@ -6,7 +6,7 @@ Due to the simulation software limitations, addresses will be 24bit.
 
 ## TERMINOLOGY
 - reg - means a register index.
-    Can be one of: `R0`, `R1`, `R2`, `R3`, `CF`, `QT`, `RM`, `SB`, `SH`, `IP`
+    Can be one of: `R0`, `R1`, `R2`, `R3`, `CF`, `DV`, `SB`, `SH`, `IP`
 
 - [mem] - means a memory address.
     Can be one of: `[const]`, `[reg]`
@@ -33,11 +33,10 @@ Contains a value that indicates the result of the last CMP instruction.
         
 - CF has register index TODO, size of 3bits.
 
-### Integer division registers QT, RM.
-Used in DIV instruction to store the quotient in QT and the remainder in RM.
+### Integer division register DV.
+Used in DIVQ instruction to store the quotient and in DIVR instruction to store the remainder
     
-- QT has register index TODO, size of 64bits.
-- RM has register index TODO, size of 64bits.
+- DV has register index TODO, size of 64bits.
 
 ### Stack registers SB, SH.
 Used in stack operations. SB points to the base of the stack, and SH points to the head of the stack. 
@@ -46,14 +45,14 @@ Used in stack operations. SB points to the base of the stack, and SH points to t
 - SH has register index TODO, size of 64bits.
     
 ### Instruction pointer register IP.
-Points to the next instruction that has to be executed. Shouldn't be directly changed.
-    
-- IP has register index TODO, size of 64bits.
+This is a special register that shoudn't be directly changed.
+Points to the next instruction that has to be executed. 
 
-### Implementation
+- IP has register index 0xFF, size of 64bits.
+----
+#### Implementation
 Registers are combined into one single regfile. 
-It can both read and write to two registers simultaneously. 
-Read operations return data instantly, while write require a CPU cycle.
+It can both read two registers and write to one register.
 
 
 ## INSTRUCTIONS
@@ -101,10 +100,11 @@ MOV mem, const
 ```
 
 ## MEMORY:
-### 1. Instruction memory - 16 words.
+### 1. Instruction memory - 8 words.
 Contains instruction and data that has to be executed. Filled in fetch part of the cycle.
 
-Implemented as 16 registers. Offers 16 pins to read each word. Words are the delivered to the instructions that need them.
+#### Implementation
+It is a chip with three input pins that are used to write a word. 8 output pins are used to read words.
     
 ### 2. Program ROM - 2^24 words.
 Contains the initial program. When DWAK starts, the program gets loaded into RAM at address 0.
@@ -146,14 +146,14 @@ Data is stored at the next CPU cycle.
 
 ## TODO
 - [x] Design registers
-- [ ] Implements registers
+- [x] Implements registers
 - [x] Design RAM
 - [ ] Implement RAM
 - [x] Design program ROM
 - [ ] Implement program ROM
 - [x] Design instruction memory
-- [ ] Implement instruction memory 
-- [ ] Design `MOV`
+- [x] Implement instruction memory 
+- [x] Design `MOV`
 - [ ] Implement `MOV`
 - [ ] Design `ADD`
 - [ ] Implement `ADD`
@@ -161,8 +161,10 @@ Data is stored at the next CPU cycle.
 - [ ] Implement `SUB`
 - [ ] Design `MUL`
 - [ ] Implement `MUL`
-- [ ] Design `DIV`
-- [ ] Implement `DIV`
+- [ ] Design `DIVQ`
+- [ ] Implement `DIVQ`
+- [ ] Design `DIVR`
+- [ ] Implement `DIVR`
 - [ ] Design `OR`
 - [ ] Implement `OR`
 - [ ] Design `AND`

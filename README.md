@@ -108,14 +108,16 @@ It is a chip with three input pins that are used to write a word. 8 output pins 
     
 ### 2. Program ROM - 2^24 words.
 Contains the initial program. When DWAK starts, the program gets loaded into RAM at address 0.
-    
+
+#### implementation    
 Implemented as an EEPROM and a circuit that loads itself into RAM when the computer boots.
 
 ### 3. RAM - 2^24 words.
 Random Access Memory. The initial program is loaded at address 0.       
 Memory at the end of RAM is used for external devices. TODO(like VGA memory)
 
-Implemented as a RAM with one write and two read ports. First read port is used in instructions, while the second port is used in communication with external hardware like graphics displays.
+#### implementation
+Implemented as a RAM with one write and two read ports.
     
 
 ## WHAT HAPPENS WHEN DWAK BOOTS:
@@ -148,7 +150,7 @@ Data is stored at the next CPU cycle.
 - [x] Design registers
 - [x] Implements registers
 - [x] Design RAM
-- [ ] Implement RAM
+- [x] Implement RAM
 - [x] Design program ROM
 - [ ] Implement program ROM
 - [x] Design instruction memory

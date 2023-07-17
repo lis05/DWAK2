@@ -73,12 +73,14 @@ MOV [mem], const    (opcode TODO)
 
 ```
 MOV reg, reg
-    0-7     opcode TODO
-    8-15    register index (first argument)
-    16-23   register index (second argument)
-    24-63   unused
+    3       =1. size in words
+    8       =TODO. opcode
+    8       register index (first argument)
+    8       register index (second argument)
+    37      unused
 MOV reg, mem
-    0-7     opcode TODO
+    3       =1. size in words
+    8       opcode TODO
     8-15    register index (first argument)
     16-39   memory address (second argument)
 MOV reg, const
@@ -134,10 +136,20 @@ This happens in two stages.
 CPU reads the next instruction. It loads it, as well as its data (if opcode requires), into the instruction memory. 
 Each word is read in one CPU cycle.
 At the end of the Fetch stage, IP points to the next instruction.
+
 ### 2. Execute
 CPU reads the content of the instruction memory, and sends its content to the right instruction chip. 
 The chip then executes the instruction in one CPU cycle. 
 All instruction chips have access to registers and RAM.
+
+---
+#### Implementation
+There is a special thing called mode. There are 3 modes:
+```
+0 - read next instuction
+1 - read and transfer data from RAM to the instruction memory
+2 - execute instruction from the instruction memory
+```
 
 
 ## HOW INSTRUCTION CHIPS WORK:

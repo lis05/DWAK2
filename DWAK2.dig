@@ -6,7 +6,7 @@
     <visualElement>
       <elementName>ram.dig</elementName>
       <elementAttributes/>
-      <pos x="680" y="240"/>
+      <pos x="1260" y="240"/>
     </visualElement>
     <visualElement>
       <elementName>EEPROMDualPort</elementName>
@@ -144,7 +144,7 @@
           <int>64</int>
         </entry>
       </elementAttributes>
-      <pos x="660" y="240"/>
+      <pos x="1240" y="240"/>
     </visualElement>
     <visualElement>
       <elementName>Const</elementName>
@@ -154,7 +154,7 @@
           <int>64</int>
         </entry>
       </elementAttributes>
-      <pos x="660" y="260"/>
+      <pos x="1240" y="260"/>
     </visualElement>
     <visualElement>
       <elementName>Splitter</elementName>
@@ -206,7 +206,7 @@
     </wire>
     <wire>
       <p1 x="520" y="320"/>
-      <p2 x="680" y="320"/>
+      <p2 x="1260" y="320"/>
     </wire>
     <wire>
       <p1 x="160" y="240"/>
@@ -221,8 +221,8 @@
       <p2 x="320" y="240"/>
     </wire>
     <wire>
-      <p1 x="660" y="240"/>
-      <p2 x="680" y="240"/>
+      <p1 x="1240" y="240"/>
+      <p2 x="1260" y="240"/>
     </wire>
     <wire>
       <p1 x="120" y="180"/>
@@ -249,8 +249,8 @@
       <p2 x="320" y="260"/>
     </wire>
     <wire>
-      <p1 x="660" y="260"/>
-      <p2 x="680" y="260"/>
+      <p1 x="1240" y="260"/>
+      <p2 x="1260" y="260"/>
     </wire>
     <wire>
       <p1 x="-40" y="340"/>
@@ -258,7 +258,7 @@
     </wire>
     <wire>
       <p1 x="140" y="340"/>
-      <p2 x="680" y="340"/>
+      <p2 x="1260" y="340"/>
     </wire>
     <wire>
       <p1 x="0" y="340"/>
@@ -290,7 +290,7 @@
     </wire>
     <wire>
       <p1 x="580" y="280"/>
-      <p2 x="680" y="280"/>
+      <p2 x="1260" y="280"/>
     </wire>
     <wire>
       <p1 x="400" y="280"/>
@@ -314,7 +314,7 @@
     </wire>
     <wire>
       <p1 x="560" y="300"/>
-      <p2 x="680" y="300"/>
+      <p2 x="1260" y="300"/>
     </wire>
     <wire>
       <p1 x="0" y="100"/>

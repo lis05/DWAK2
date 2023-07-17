@@ -19,10 +19,10 @@ Due to the simulation software limitations, addresses will be 24bit.
 ### General usage registers R0, R1, R2, R3.
 Used in general computations.
 
-- R0 has register index TODO, size of 64bits.
-- R1 has register index TODO, size of 64bits.
-- R2 has register index TODO, size of 64bits.
-- R3 has register index TODO size of 64bits.
+- R0 has register index 0, size of 64bits.
+- R1 has register index 1, size of 64bits.
+- R2 has register index 2, size of 64bits.
+- R3 has register index 3 size of 64bits.
 
 ### Conditional flag register CF.
 Contains a value that indicates the result of the last CMP instruction.
@@ -31,18 +31,18 @@ Contains a value that indicates the result of the last CMP instruction.
         2 means "less", 3 means "less equal",
         4 means "greater", 5 means "greater equal".
         
-- CF has register index TODO, size of 3bits.
+- CF has register index 4, size of 3bits.
 
 ### Integer division register DV.
 Used in DIVQ instruction to store the quotient and in DIVR instruction to store the remainder
     
-- DV has register index TODO, size of 64bits.
+- DV has register index 5, size of 64bits.
 
 ### Stack registers SB, SH.
 Used in stack operations. SB points to the base of the stack, and SH points to the head of the stack. 
     
-- SB has register index TODO, size of 64bits.
-- SH has register index TODO, size of 64bits.
+- SB has register index 6, size of 64bits.
+- SH has register index 7, size of 64bits.
     
 ### Instruction pointer register IP.
 This is a special register that shoudn't be directly changed.
@@ -56,18 +56,21 @@ It can both read two registers and write to one register.
 
 
 ## INSTRUCTIONS
-### 1. MOV
-Moves data from one location to another.
+### 1. MOV X, Y
+Moves data from Y to X
 Can move data to registers or memory.
 Can move data from registers, memory, or move constant values. However, can't move data from memory to memory.
 
 #### Syntax:
 ```
-MOV reg, reg        (opcode TODO)
-MOV reg, [mem]      (opcode TODO)
-MOV reg, const      (opcode TODO)
-MOV [mem], reg      (opcode TODO)
-MOV [mem], const    (opcode TODO)
+MOV reg, reg
+MOV reg, const
+MOV reg, [const]
+MOV reg, [reg]
+MOV [const], const
+MOV [const], reg
+MOV [reg], const
+MOV [reg], reg
 ```
 #### Binary representation
 
@@ -78,32 +81,71 @@ MOV reg, reg
     8       register index (first argument)
     8       register index (second argument)
     37      unused
-MOV reg, [mem]
-    3       =1. size in words
+MOV reg, const
+    3       =2. size in words
     8       =1. opcode
     8       register index (first argument)
-    24      memory address (second argument)
-    21 unused
-MOV reg, const
+    45      unused
+
+    64      constant (second argument)
+MOV reg, [const]
     3       =2. size in words
     8       =2. opcode
     8       register index (first argument)
     45      unused
 
     64      constant (second argument)
-MOV [mem], reg
+MOV reg, [reg]
     3       =1. size in words
     8       =3. opcode
-    24      memory address (first argument)
+    8       register index (first argument)
     8       register index (second argument)
-    21      unused
-MOV [mem], const
-    3       =2. size in words
+    37      unused
+MOV [const], const
+    3       =3. size in words
     8       =4. opcode
-    24      memory address (first argument)
-    29      unused
+    53      unused
 
-    64      constant (second argument)
+    64      const (first argument)
+
+    64      const (first argument)
+MOV [const], reg
+    3       =2. size in words
+    8       =5. opcode
+    8       register index (second argument)
+    45      unused
+
+    64      const (first argument)
+MOV [reg], const
+    3       =2. size in words
+    8       =6. opcode
+    8       register index (first argument)
+    45      unused
+
+    64      const (second argument)
+MOV [reg], reg
+    3       =1. size in words
+    8       =7. opcode
+    8       register index (first argument)
+    8       register index (second argument)
+    37      unused
+```
+#### Implementation
+It is implemented as a one single chip that is made of 8 smaller chips, each corresponding to one of the opcodes.
+
+### DONE
+Stops everything
+#### Syntax
+```
+DONE
+```
+#### Binary representation
+
+```
+DONE
+    3       =1. size in words
+    8       =255. opcode
+    53      unused
 ```
 
 
@@ -178,9 +220,9 @@ Data is stored at the next CPU cycle.
 - [x] Design instruction memory
 - [x] Implement instruction memory 
 - [x] Design Fetch stage
-- [ ] Implement Fetch stage
+- [x] Implement Fetch stage
 - [x] Design `MOV`
-- [ ] Implement `MOV`
+- [x] Implement `MOV`
 - [ ] Design `ADD`
 - [ ] Implement `ADD`
 - [ ] Design `SUB`

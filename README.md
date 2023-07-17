@@ -154,9 +154,11 @@ Data is stored at the next CPU cycle.
 - [x] Design RAM
 - [x] Implement RAM
 - [x] Design program ROM
-- [ ] Implement program ROM
+- [x] Implement program ROM
 - [x] Design instruction memory
 - [x] Implement instruction memory 
+- [x] Design Fetch stage
+- [ ] Implement Fetch stage
 - [x] Design `MOV`
 - [ ] Implement `MOV`
 - [ ] Design `ADD`

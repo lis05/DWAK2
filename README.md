@@ -106,11 +106,13 @@ Contains instruction and data that has to be executed. Filled in fetch part of t
 #### Implementation
 It is a chip with three input pins that are used to write a word. 8 output pins are used to read words.
     
-### 2. Program ROM - 2^24 words.
+### 2. Program ROM - 2^10 words.
 Contains the initial program. When DWAK starts, the program gets loaded into RAM at address 0.
 
 #### implementation    
 Implemented as an EEPROM and a circuit that loads itself into RAM when the computer boots.
+
+The circuit simply reads 1024 words and writes them into RAM at the respectifull address. When it reaches 1024-th word, it toggles a register that stops further writing to RAM.
 
 ### 3. RAM - 2^24 words.
 Random Access Memory. The initial program is loaded at address 0.       

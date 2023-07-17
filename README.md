@@ -74,32 +74,38 @@ MOV [mem], const    (opcode TODO)
 ```
 MOV reg, reg
     3       =1. size in words
-    8       =TODO. opcode
+    8       =0. opcode
     8       register index (first argument)
     8       register index (second argument)
     37      unused
-MOV reg, mem
+MOV reg, [mem]
     3       =1. size in words
-    8       opcode TODO
-    8-15    register index (first argument)
-    16-39   memory address (second argument)
+    8       =1. opcode
+    8       register index (first argument)
+    24      memory address (second argument)
+    21 unused
 MOV reg, const
-    0-7     opcode TODO
-    8-15    register index (first argument)
-    16-63   unused
+    3       =2. size in words
+    8       =2. opcode
+    8       register index (first argument)
+    45      unused
 
-    0-63    constant (second argument)
-MOV mem, reg
-    0-7     opcode TODO
-    8-31    memory address (first argument)
-    32-39   register index (second argument)
-MOV mem, const
-    0-7     opcode TODO
-    8-31    memory address (first argument)
-    32-63   unused
-    
-    0-63    constant (second argument)
+    64      constant (second argument)
+MOV [mem], reg
+    3       =1. size in words
+    8       =3. opcode
+    24      memory address (first argument)
+    8       register index (second argument)
+    21      unused
+MOV [mem], const
+    3       =2. size in words
+    8       =4. opcode
+    24      memory address (first argument)
+    29      unused
+
+    64      constant (second argument)
 ```
+
 
 ## MEMORY:
 ### 1. Instruction memory - 8 words.
@@ -150,6 +156,8 @@ There is a special thing called mode. There are 3 modes:
 1 - read and transfer data from RAM to the instruction memory
 2 - execute instruction from the instruction memory
 ```
+
+the mode cycles in 0-1-2-0 cycle
 
 
 ## HOW INSTRUCTION CHIPS WORK:

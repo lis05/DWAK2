@@ -144,10 +144,9 @@ All instruction chips have access to registers and RAM.
 
 ---
 #### Implementation
-There is a special thing called mode. There are 3 modes:
+There is a special thing called mode. There are 2 modes:
 ```
-0 - read next instuction
-1 - read and transfer data from RAM to the instruction memory
+1 - read and transfer instuction with its data from RAM to the instruction memory
 2 - execute instruction from the instruction memory
 ```
 

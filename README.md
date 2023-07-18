@@ -33,11 +33,6 @@ Contains a value that indicates the result of the last CMP instruction.
         
 - CF has register index 4, size of 3bits.
 
-### Integer division register DV.
-Used in DIVQ instruction to store the quotient and in DIVR instruction to store the remainder
-    
-- DV has register index 5, size of 64bits.
-
 ### Stack registers SB, SH.
 Used in stack operations. SB points to the base of the stack, and SH points to the head of the stack. 
     
@@ -146,6 +141,99 @@ DONE
     3       =1. size in words
     8       =255. opcode
     53      unused
+```
+### ARITHM
+ARITHM instuction executes some arithmetic operation on numbers X and Y, storing result in X, and if needed - in Y.
+There are a few operations supported:
+```
+ADD X, Y. aopcode 0, stores X+Y in X.
+SUB X, Y. aopcode 1, stores X-Y in X.
+MUL X, Y. aopcode 2, stores X*Y in X.
+DIV X, Y. aopcode 3, stores X//Y in X and X%Y in Y.
+AND X, Y. aopcode 4, stores X AND Y in X.
+OR X, Y.  aopcode 5, stores X OR Y in X.
+XOR X, Y. aopcode 6, stores X XOR Y in X.
+NOT X, Y. aopcode 7, stores NOT X in X.
+SHL X, Y. aopcode 8, stores X<<Y in X.
+SHR X, Y. aopcode 9, stores X>>Y in X.
+```
+
+#### Syntax
+```
+ARITHM OP, reg, reg
+ARITHM OP, reg, const
+ARITHM OP, reg, [const]
+ARITHM OP, reg, [reg]
+ARITHM OP, [const], const
+ARITHM OP, [const], reg
+ARITHM OP, [reg], const
+ARITHM OP, [reg], reg
+```
+
+#### Binary representation
+```
+ARITHM OP, reg, reg
+    3       =1. size in words
+    8       =8. opcode
+    4       aopcode (first argument)
+    8       register index (second argument)
+    8       register index (third argument)
+    33      unused
+ARITHM OP, reg, const
+    3       =2. size in words
+    8       =9. opcode
+    4       aopcode (first argument)
+    8       register index (second argument)
+    41      unused
+
+    64      constant (third argument)
+ARITHM OP, reg, [const]
+    3       =2. size in words
+    8       =10. opcode
+    4       aopcode (first argument)
+    8       register index (second argument)
+    41      unused
+
+    64      constant (third argument)
+ARITHM OP, reg, [reg]
+    3       =1. size in words
+    8       =11. opcode
+    4       aopcode (first argument)
+    8       register index (second argument)
+    8       register index (third argument)
+    33      unused
+ARITHM OP, [const], const
+    3       =3. size in words
+    8       =12. opcode
+    4       aopcode (first argument)
+    49      unused
+
+    64      constant (second argument)
+
+    64      constant (second argument)
+ARITHM OP, [const], reg
+    3       =2. size in words
+    8       =13. opcode
+    4       aopcode (first argument)
+    8       register index (third argument)
+    41      unused
+
+    64      constant (second argument)
+ARITHM OP, [reg], const
+    3       =2. size in words
+    8       =14. opcode
+    4       aopcode (first argument)
+    8       register index (second argument)
+    41      unused
+
+    64      constant (third argument)
+ARITHM OP, [reg], reg
+    3       =1. size in words
+    8       =15. opcode
+    4       aopcode (first argument)
+    8       register index (second argument)
+    8       register index (third argument)
+    33      unused
 ```
 
 

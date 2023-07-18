@@ -143,19 +143,20 @@ DONE
     53      unused
 ```
 ### ARITHM
-ARITHM instuction executes some arithmetic operation on numbers X and Y, storing result in X, and if needed - in Y.
+ARITHM instuction executes some arithmetic operation on numbers X and Y, storing result in X.
 There are a few operations supported:
 ```
 ADD X, Y. aopcode 0, stores X+Y in X.
 SUB X, Y. aopcode 1, stores X-Y in X.
 MUL X, Y. aopcode 2, stores X*Y in X.
-DIV X, Y. aopcode 3, stores X//Y in X and X%Y in Y.
-AND X, Y. aopcode 4, stores X AND Y in X.
-OR X, Y.  aopcode 5, stores X OR Y in X.
-XOR X, Y. aopcode 6, stores X XOR Y in X.
-NOT X, Y. aopcode 7, stores NOT X in X.
-SHL X, Y. aopcode 8, stores X<<Y in X.
-SHR X, Y. aopcode 9, stores X>>Y in X.
+DIVQ X, Y. aopcode 3, stores X//Y in X.
+DIVR X, Y. aopcode 4, stores X%Q in X.
+AND X, Y. aopcode 5, stores X AND Y in X.
+OR X, Y.  aopcode 6, stores X OR Y in X.
+XOR X, Y. aopcode 7, stores X XOR Y in X.
+NOT X, Y. aopcode 8, stores NOT X in X.
+SHL X, Y. aopcode 9, stores X<<Y in X.
+SHR X, Y. aopcode 10, stores X>>Y in X.
 ```
 
 #### Syntax
@@ -235,6 +236,8 @@ ARITHM OP, [reg], reg
     8       register index (third argument)
     33      unused
 ```
+#### Notes
+ARITHM OP, X, Y instruction is simplified to OP, X, Y in the assembler.
 
 
 ## MEMORY:

@@ -100,7 +100,7 @@ def MOV_MEMconst_const(args, add_words):
 
     word = const(args[2])  # const
 
-    data += f"{word:x}\n"
+    add_words(word)
 
 
 def MOV_MEMconst_reg(args, add_words):

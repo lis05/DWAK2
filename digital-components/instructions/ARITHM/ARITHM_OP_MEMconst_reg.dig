@@ -113,6 +113,25 @@
       <elementAttributes>
         <entry>
           <string>Label</string>
+          <string>read_addr1</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>64</int>
+        </entry>
+      </elementAttributes>
+      <pos x="1260" y="640"/>
+    </visualElement>
+    <visualElement>
+      <elementName>active-1.dig</elementName>
+      <elementAttributes/>
+      <pos x="1160" y="500"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
           <string>addr_write</string>
         </entry>
         <entry>
@@ -123,9 +142,18 @@
       <pos x="1260" y="320"/>
     </visualElement>
     <visualElement>
-      <elementName>active-1.dig</elementName>
-      <elementAttributes/>
-      <pos x="1160" y="500"/>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>in_1</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>64</int>
+        </entry>
+      </elementAttributes>
+      <pos x="420" y="420"/>
     </visualElement>
     <visualElement>
       <elementName>Out</elementName>
@@ -142,18 +170,9 @@
       <pos x="1260" y="420"/>
     </visualElement>
     <visualElement>
-      <elementName>In</elementName>
-      <elementAttributes>
-        <entry>
-          <string>Label</string>
-          <string>in_1</string>
-        </entry>
-        <entry>
-          <string>Bits</string>
-          <int>64</int>
-        </entry>
-      </elementAttributes>
-      <pos x="420" y="400"/>
+      <elementName>active-8.dig</elementName>
+      <elementAttributes/>
+      <pos x="1160" y="160"/>
     </visualElement>
     <visualElement>
       <elementName>Out</elementName>
@@ -166,9 +185,23 @@
       <pos x="1260" y="520"/>
     </visualElement>
     <visualElement>
-      <elementName>active-8.dig</elementName>
+      <elementName>active-64.dig</elementName>
       <elementAttributes/>
-      <pos x="1160" y="160"/>
+      <pos x="1160" y="620"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>in_2</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>64</int>
+        </entry>
+      </elementAttributes>
+      <pos x="420" y="680"/>
     </visualElement>
   </visualElements>
   <wires>
@@ -181,7 +214,11 @@
       <p2 x="1160" y="160"/>
     </wire>
     <wire>
-      <p1 x="460" y="420"/>
+      <p1 x="1220" y="640"/>
+      <p2 x="1260" y="640"/>
+    </wire>
+    <wire>
+      <p1 x="420" y="420"/>
       <p2 x="520" y="420"/>
     </wire>
     <wire>
@@ -201,16 +238,24 @@
       <p2 x="1160" y="200"/>
     </wire>
     <wire>
+      <p1 x="420" y="680"/>
+      <p2 x="500" y="680"/>
+    </wire>
+    <wire>
       <p1 x="460" y="300"/>
       <p2 x="1160" y="300"/>
     </wire>
     <wire>
-      <p1 x="420" y="400"/>
-      <p2 x="520" y="400"/>
+      <p1 x="460" y="620"/>
+      <p2 x="1160" y="620"/>
     </wire>
     <wire>
       <p1 x="680" y="400"/>
       <p2 x="1160" y="400"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="400"/>
+      <p2 x="520" y="400"/>
     </wire>
     <wire>
       <p1 x="1080" y="340"/>
@@ -227,6 +272,10 @@
     <wire>
       <p1 x="1220" y="180"/>
       <p2 x="1260" y="180"/>
+    </wire>
+    <wire>
+      <p1 x="1080" y="660"/>
+      <p2 x="1160" y="660"/>
     </wire>
     <wire>
       <p1 x="1080" y="440"/>
@@ -249,6 +298,10 @@
       <p2 x="500" y="380"/>
     </wire>
     <wire>
+      <p1 x="500" y="400"/>
+      <p2 x="500" y="680"/>
+    </wire>
+    <wire>
       <p1 x="1080" y="20"/>
       <p2 x="1080" y="200"/>
     </wire>
@@ -265,6 +318,10 @@
       <p2 x="1080" y="440"/>
     </wire>
     <wire>
+      <p1 x="1080" y="540"/>
+      <p2 x="1080" y="660"/>
+    </wire>
+    <wire>
       <p1 x="1080" y="500"/>
       <p2 x="1080" y="540"/>
     </wire>
@@ -274,7 +331,7 @@
     </wire>
     <wire>
       <p1 x="460" y="300"/>
-      <p2 x="460" y="420"/>
+      <p2 x="460" y="620"/>
     </wire>
   </wires>
   <measurementOrdering/>

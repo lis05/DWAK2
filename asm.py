@@ -30,6 +30,7 @@ for line in lines:
     if not args: continue
 
     asm.MOV.MOV(args, add_words)
+    asm.ARITHM.ARITHM(args, add_words)
     asm.DONE.DONE(args, add_words)
 
 with open(output, "w") as f:

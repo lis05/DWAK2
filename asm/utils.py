@@ -38,7 +38,10 @@ def is_const(x):
 
 
 def const(x):
-    return eval(x)
+    y = eval(x)
+    if y < 0:
+        y += 2**64
+    return y
 
 
 def is_reg_mem(x):

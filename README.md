@@ -31,13 +31,13 @@ Contains a value that indicates the result of the last CMP instruction.
         2 means "less", 3 means "less equal",
         4 means "greater", 5 means "greater equal".
         
-- CF has register index 4, size of 3bits.
+- CF has register index 0xFC, size of 64bits.
 
 ### Stack registers SB, SH.
 Used in stack operations. SB points to the base of the stack, and SH points to the head of the stack. 
     
-- SB has register index 6, size of 64bits.
-- SH has register index 7, size of 64bits.
+- SB has register index 0xFD, size of 64bits.
+- SH has register index 0xFE, size of 64bits.
     
 ### Instruction pointer register IP.
 This is a special register that shoudn't be directly changed.
@@ -314,28 +314,28 @@ Data is stored at the next CPU cycle.
 - [x] Implement Fetch stage
 - [x] Design `MOV`
 - [x] Implement `MOV`
-- [ ] Design `ADD`
-- [ ] Implement `ADD`
-- [ ] Design `SUB`
-- [ ] Implement `SUB`
-- [ ] Design `MUL`
-- [ ] Implement `MUL`
-- [ ] Design `DIVQ`
-- [ ] Implement `DIVQ`
-- [ ] Design `DIVR`
-- [ ] Implement `DIVR`
-- [ ] Design `OR`
-- [ ] Implement `OR`
-- [ ] Design `AND`
-- [ ] Implement `AND`
-- [ ] Design `XOR`
-- [ ] Implement `XOR`
-- [ ] Design `NOT`
-- [ ] Implement `NOT`
-- [ ] Design `SHL`
-- [ ] Implement `SHL`
-- [ ] Design `SHR`
-- [ ] Implement `SHR`
+- [x] Design `ADD`
+- [x] Implement `ADD`
+- [x] Design `SUB`
+- [x] Implement `SUB`
+- [x] Design `MUL`
+- [x] Implement `MUL`
+- [x] Design `DIVQ`
+- [x] Implement `DIVQ`
+- [x] Design `DIVR`
+- [x] Implement `DIVR`
+- [x] Design `OR`
+- [x] Implement `OR`
+- [x] Design `AND`
+- [x] Implement `AND`
+- [x] Design `XOR`
+- [x] Implement `XOR`
+- [x] Design `NOT`
+- [x] Implement `NOT`
+- [x] Design `SHL`
+- [x] Implement `SHL`
+- [x] Design `SHR`
+- [x] Implement `SHR`
 - [ ] Design `CMP`
 - [ ] Implement `CMP`
 - [ ] Design `JMP`

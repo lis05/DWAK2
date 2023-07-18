@@ -3,11 +3,10 @@ registers = {
     "R1": 1,
     "R2": 2,
     "R3": 3,
-    "CF": 4,
-    "DV": 5,
-    "SB": 6,
-    "SH": 7,
-    "IP": 8,
+    "CF": 0xFC,
+    "SB": 0xFD,
+    "SH": 0xFE,
+    "IP": 0xFF,
 }
 
 
@@ -20,6 +19,7 @@ def reg(x):
 
 
 def is_const(x):
+    if is_reg(x): return False
     try:
         int(x)
         return True
@@ -35,6 +35,7 @@ def is_const(x):
         return True
     except:
         pass
+    return False
 
 
 def const(x):

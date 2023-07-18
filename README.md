@@ -26,10 +26,11 @@ Used in general computations.
 
 ### Conditional flag register CF.
 Contains a value that indicates the result of the last CMP instruction.
+The values is a bitmask, with each set bit meaning a certain condition.
 
-        0 means "equal", 1 means "not equal",
-        2 means "less", 3 means "less equal",
-        4 means "greater", 5 means "greater equal".
+    1 means "equal", 2 means "not equal",
+    4 means "less", 8 means "less equal",
+    16 means "greater", 32 means "greater equal".
         
 - CF has register index 0xFC, size of 64bits.
 
@@ -128,20 +129,6 @@ MOV [reg], reg
 #### Implementation
 It is implemented as a one single chip that is made of 8 smaller chips, each corresponding to one of the opcodes.
 
-### DONE
-Stops everything
-#### Syntax
-```
-DONE
-```
-#### Binary representation
-
-```
-DONE
-    3       =1. size in words
-    8       =255. opcode
-    53      unused
-```
 ### ARITHM
 ARITHM instuction executes some arithmetic operation on numbers X and Y, storing result in X.
 There are a few operations supported:
@@ -236,9 +223,114 @@ ARITHM OP, [reg], reg
     8       register index (third argument)
     33      unused
 ```
+#### Implementation
+Implemented as a single chip with 8 smaller chips(each for one opcode) inside.
+
 #### Notes
 ARITHM OP, X, Y instruction is simplified to OP, X, Y in the assembler.
 
+### CMP
+CMP compares two values, and writes the result into CF register.
+Values are bitmasks.
+```
+1 means "equal", 2 means "not equal",
+4 means "less", 8 means "less equal",
+16 means "greater", 32 means "greater equal".
+```
+
+#### Syntax
+```
+CMP reg, reg
+CMP reg, const
+CMP reg, [const]
+CMP reg, [reg]
+CMP [const], const
+CMP [const], reg
+CMP [reg], const
+CMP [reg], reg
+CMP const, const
+```
+
+#### Binary representation
+```
+CMP reg, reg
+    3       =1. size in words
+    8       =16. opcode
+    8       register index (first argument)
+    8       register index (second argument)
+    37      unused
+CMP reg, const
+    3       =2. size in words
+    8       =17. opcode
+    8       register index (first argument)
+    45      unused
+
+    64      constant (second argument)
+CMP reg, [const]
+    3       =2. size in words
+    8       =18. opcode
+    8       register index (first argument)
+    45      unused
+
+    64      constant (second argument)
+CMP reg, [reg]
+    3       =1. size in words
+    8       =19. opcode
+    8       register index (first argument)
+    8       register index (second argument)
+    37      unused
+CMP [const], const
+    3       =3. size in words
+    8       =20. opcode
+    53      unused
+
+    64      constant (first argument)
+
+    64      constant (second argument)
+CMP [const], reg
+    3       =2. size in words
+    8       =21. opcode
+    8       register index (second argument)
+    45      unused
+
+    64      constant (first argument)
+CMP [reg], const
+    3       =2. size in words
+    8       =22. opcode
+    8       register index (first argument)
+    45      unused
+
+    64      constant (second argument)
+CMP [reg], reg
+    3       =1. size in words
+    8       =23. opcode
+    8       register index (first argument)
+    8       register index (second argument)
+    37      unused
+CMP const, const
+    3       =3. size in words
+    8       =24. opcode
+    53      unused
+
+    64      constant (first argument)
+
+    64      constant (second argument)
+```
+
+### DONE
+Stops everything
+#### Syntax
+```
+DONE
+```
+#### Binary representation
+
+```
+DONE
+    3       =1. size in words
+    8       =255. opcode
+    53      unused
+```
 
 ## MEMORY:
 ### 1. Instruction memory - 8 words.

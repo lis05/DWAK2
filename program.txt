@@ -1,8 +1,13 @@
 MOV SB, 1000000     // we have to setup stack
 MOV SH, 1000000     // we have to setup stack
 
-MOV R0, 20   // index of the fibonacci number
-CALL FIB
+MOV R0, 0   // index of the fibonacci number
+
+LOOP:
+    CALL FIB
+    MOV [0xFFFF], RR
+    ADD R0, 1
+
 
 MOV [0xFFFF], RR
 

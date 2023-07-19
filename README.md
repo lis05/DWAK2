@@ -23,6 +23,15 @@ Used in general computations.
 - R1 has register index 1, size of 64bits.
 - R2 has register index 2, size of 64bits.
 - R3 has register index 3 size of 64bits.
+### Return register RP.
+Contains return data of the last function call.
+
+- RR has register index 0xFA, size of 64bits
+
+### Return pointer register RP.
+Points to the return address that CPU has to return to after exiting a function call.
+
+- RP has register index 0xFB, size of 64bits
 
 ### Conditional flag register CF.
 Contains a value that indicates the result of the last CMP instruction.
@@ -315,6 +324,96 @@ CMP const, const
     64      constant (first argument)
 
     64      constant (second argument)
+```
+
+### JMP
+Jumps to a memory address if some condition was met (sets IP to that address).
+The condition is determined by the conditional code, or condcode:
+```
+0 (JE)  - jump if CF has bit 0 (equal)
+1 (JNE) - jump if CF has bit 1 (not equal)
+2 (JL)  - jump if CF has bit 2 (less)
+3 (JLE) - jump if CF has bit 3 (less equal)
+4 (JG)  - jump if CF has bit 4 (greater)
+5 (JGE) - jump if CF has bit 5 (greater equal)
+6 (JMP) - unconditional jump
+```
+
+#### Syntax
+```
+JMP CND, const
+JMP CND, reg
+JMP CND, [const]
+JMP CND, [reg]
+```
+
+#### Binary representation
+```
+JMP CND, const
+    3       =2. size in words
+    8       =25. opcode
+    3       condcode (first argument)
+    50      unused
+
+    64      constant (second argument)
+JMP CND, reg
+    3       =1. size in words
+    8       =26. opcode
+    3       condcode (first argument)
+    8       register index (second argument)
+    42      unused
+JMP CND, [const]
+    3       =2. size in words
+    8       =27. opcode
+    3       condcode (first argument)
+    50      unused
+
+    64      constant (second argument)
+JMP CND, [reg]
+    3       =1. size in words
+    8       =28. opcode
+    3       condcode (first argument)
+    8       register index (second argument)
+    42      unused
+```
+#### Notes
+JMP CND, X instruction is simplified to CND X in the assembler.
+
+### PUSH, POP
+These two instructions are implemented using ARITHM and MOV instructions.
+PUSH pushes a word at SH address in RAM, and POP pops a word from the SH address in RAM. 
+When pushing, SH register is decremented by 1. When popping, it's incremented by 1.
+
+#### Syntax
+```
+PUSH const
+PUSH reg
+PUSH [const]
+PUSH [reg]
+
+POP reg
+POP [const]
+POP [reg]
+```
+
+### CALL, RET
+Call calls a function. Ret returns from a function. Both are implemented as a set of MOV, ARITHM, and JMP instructions.
+
+CALL Pushes all registers on the stack, and ret pops them. Also uses a RP register to return to the right location after leaving a function. Setups a new stack frame as well.
+
+
+RET pops all registers, and jumps to address stored in RP
+
+Note that RR register is not pushed nor poped. It is used as return value.
+
+#### Syntax
+```
+CALL const
+CALL reg
+CALL [const]
+CALL [reg]
+
+RET
 ```
 
 ### DONE

@@ -1,7 +1,42 @@
-MOV R0, 0x15
-MOV [R0], 35
-MOV R1, -1
-CMP 15, -9
+MOV SB, 1000000     // we have to setup stack
+MOV SH, 1000000     // we have to setup stack
 
-MOV [0xFFFF], CF
+MOV R0, 20   // index of the fibonacci number
+CALL FIB
+
+MOV [0xFFFF], RR
+
 DONE
+
+// ALL FUNCTIONS SHOULD BE DECLARED HERE
+
+FIB:
+    // index is stored in R0
+
+    CMP R0, 0
+    JE FIB0
+
+    CMP R0, 1
+    JE FIB1
+
+    SUB R0, 1 // n-1
+    CALL FIB
+    MOV R1, RR
+
+    SUB R0, 1 // n-2
+    CALL FIB
+    MOV R2, RR
+
+    ADD R1, R2
+    MOV RR, R1
+
+    EXIT:
+        RET
+
+FIB0:
+    MOV RR, 0
+    JMP EXIT
+
+FIB1:
+    MOV RR, 1
+    JMP EXIT

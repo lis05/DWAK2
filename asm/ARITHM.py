@@ -1,27 +1,8 @@
 from asm.utils import *
-
-aopcodes = {
-    "ADD": 0,
-    "SUB": 1,
-    "MUL": 2,
-    "DIVQ": 3,
-    "DIVR": 4,
-    "AND": 5,
-    "OR": 6,
-    "XOR": 7,
-    "NOT": 8,
-    "SHL": 9,
-    "SHR": 10,
-}
-
-def is_aopcode(x):
-    return x in aopcodes.keys()
-
-def aopcode(x):
-    return aopcodes[x]
+from asm.binary import Word
 
 
-def ARITHM_OP_reg_reg(args, add_words):
+def ARITHM_OP_reg_reg(args, binary):
     if not is_aopcode(args[0]):
         return
     if not is_reg(args[1]) or not is_reg(args[2]):
@@ -31,16 +12,10 @@ def ARITHM_OP_reg_reg(args, add_words):
 
     print(args, "ARITHM_OP_reg_reg")
 
-    word = 1  # size in words
-    word += 8 << (3)  # opcode
-    word += aopcode(args[0]) << (3 + 8)  # aopcode
-    word += reg(args[1]) << (3 + 8 + 4)  # register 1
-    word += reg(args[2]) << (3 + 8 + 4 + 8)  # register 2
-
-    add_words(word)
+    binary.join(Word().size(1).opcode(8).aopcode(args[0]).reg(args[1]).reg(args[2]))
 
 
-def ARITHM_OP_reg_const(args, add_words):
+def ARITHM_OP_reg_const(args, binary):
     if not is_aopcode(args[0]):
         return
     if not is_reg(args[1]):
@@ -50,19 +25,11 @@ def ARITHM_OP_reg_const(args, add_words):
 
     print(args, "ARITHM_OP_reg_const")
 
-    word = 2  # size in words
-    word += 9 << (3)  # opcode
-    word += aopcode(args[0]) << (3 + 8)  # aopcode
-    word += reg(args[1]) << (3 + 8 + 4)  # reg
-
-    add_words(word)
-
-    word = const(args[2])  # const
-
-    add_words(word)
+    binary.join(Word().size(2).opcode(9).aopcode(args[0]).reg(args[1]))
+    binary.join(Word().const(args[2]))
 
 
-def ARITHM_OP_reg_MEMconst(args, add_words):
+def ARITHM_OP_reg_MEMconst(args, binary):
     if not is_aopcode(args[0]):
         return
     if not is_reg(args[1]):
@@ -72,19 +39,11 @@ def ARITHM_OP_reg_MEMconst(args, add_words):
 
     print(args, "ARITHM_OP_reg_MEMconst")
 
-    word = 2  # size in words
-    word += 10 << (3)  # opcode
-    word += aopcode(args[0]) << (3 + 8)  # aopcode
-    word += reg(args[1]) << (3 + 8 + 4)  # reg
-
-    add_words(word)
-
-    word = mem(args[2])  # const
-
-    add_words(word)
+    binary.join(Word().size(2).opcode(10).aopcode(args[0]).reg(args[1]))
+    binary.join(Word().const_mem(args[2]))
 
 
-def ARITHM_OP_reg_MEMreg(args, add_words):
+def ARITHM_OP_reg_MEMreg(args, binary):
     if not is_aopcode(args[0]):
         return
     if not is_reg(args[1]):
@@ -94,16 +53,10 @@ def ARITHM_OP_reg_MEMreg(args, add_words):
 
     print(args, "ARIHTM_OP_reg_MEMreg")
 
-    word = 1  # size in words
-    word += 11 << (3)  # opcode
-    word += aopcode(args[0]) << (3 + 8)  # aopcode
-    word += reg(args[1]) << (3 + 8 + 4)  # reg
-    word += mem(args[2]) << (3 + 8 + 4 + 8)  # mem
-
-    add_words(word)
+    binary.join(Word().size(1).opcode(11).aopcode(args[0]).reg(args[1]).reg_mem(args[2]))
 
 
-def ARITHM_OP_MEMconst_const(args, add_words):
+def ARITHM_OP_MEMconst_const(args, binary):
     if not is_aopcode(args[0]):
         return
     if not is_const_mem(args[1]):
@@ -113,22 +66,12 @@ def ARITHM_OP_MEMconst_const(args, add_words):
 
     print(args, "ARITHM_OP_MEMconst_const")
 
-    word = 3  # size in words
-    word += 12 << (3)  # opcode
-    word += aopcode(args[0]) << (3 + 8)  # aopcode
-
-    add_words(word)
-
-    word = mem(args[1])  # mem
-
-    add_words(word)
-
-    word = const(args[2])  # const
-
-    add_words(word)
+    binary.join(Word().size(3).opcode(12).aopcode(args[0]))
+    binary.join(Word().const_mem(args[1]))
+    binary.join(Word().const(args[2]))
 
 
-def ARITHM_OP_MEMconst_reg(args, add_words):
+def ARITHM_OP_MEMconst_reg(args, binary):
     if not is_aopcode(args[0]):
         return
     if not is_const_mem(args[1]):
@@ -138,19 +81,11 @@ def ARITHM_OP_MEMconst_reg(args, add_words):
 
     print(args, "ARITHM_OP_MEMconst_reg")
 
-    word = 2  # size in words
-    word += 13 << (3)  # opcode
-    word += aopcode(args[0]) << (3 + 8)  # aopcode
-    word += reg(args[2]) << (3 + 8 + 4)  # reg
-
-    add_words(word)
-
-    word = mem(args[1])  # mem
-
-    add_words(word)
+    binary.join(Word().size(2).opcode(13).aopcode(args[0]).reg(args[2]))
+    binary.join(Word().const_mem(args[1]))
 
 
-def ARITHM_OP_MEMreg_const(args, add_words):
+def ARITHM_OP_MEMreg_const(args, binary):
     if not is_aopcode(args[0]):
         return
     if not is_reg_mem(args[1]):
@@ -160,19 +95,11 @@ def ARITHM_OP_MEMreg_const(args, add_words):
 
     print(args, "ARITHM_OP_MEMreg_const")
 
-    word = 2  # size in words
-    word += 14 << (3)  # opcode
-    word += aopcode(args[0]) << (3 + 8)  # aopcode
-    word += mem(args[1]) << (3 + 8 + 4)  # mem
-
-    add_words(word)
-
-    word = const(args[2])  # const
-
-    add_words(word)
+    binary.join(Word().size(2).opcode(14).aopcode(args[0]).reg_mem(args[1]))
+    binary.join(Word().const(args[2]))
 
 
-def ARITHM_OP_MEMreg_reg(args, add_words):
+def ARITHM_OP_MEMreg_reg(args, binary):
     if not is_aopcode(args[0]):
         return
     if not is_reg_mem(args[1]):
@@ -182,21 +109,15 @@ def ARITHM_OP_MEMreg_reg(args, add_words):
 
     print(args, "ARITHM_OP_MEMreg_reg")
 
-    word = 1  # size in words
-    word += 15 << (3)  # opcode
-    word += aopcode(args[0]) << (3 + 8)  # aopcode
-    word += mem(args[1]) << (3 + 8 + 4)  # mem
-    word += reg(args[2]) << (3 + 8 + 4 + 8)  # mem
-
-    add_words(word)
+    binary.join(Word().size(1).opcode(15).aopcode(args[0]).reg_mem(args[1]).reg(args[2]))
 
 
-def ARITHM(args, add_words):
-    ARITHM_OP_reg_reg(args, add_words)
-    ARITHM_OP_reg_const(args, add_words)
-    ARITHM_OP_reg_MEMconst(args, add_words)
-    ARITHM_OP_reg_MEMreg(args, add_words)
-    ARITHM_OP_MEMconst_const(args, add_words)
-    ARITHM_OP_MEMconst_reg(args, add_words)
-    ARITHM_OP_MEMreg_const(args, add_words)
-    ARITHM_OP_MEMreg_reg(args, add_words)
+def ARITHM(args, binary):
+    ARITHM_OP_reg_reg(args, binary)
+    ARITHM_OP_reg_const(args, binary)
+    ARITHM_OP_reg_MEMconst(args, binary)
+    ARITHM_OP_reg_MEMreg(args, binary)
+    ARITHM_OP_MEMconst_const(args, binary)
+    ARITHM_OP_MEMconst_reg(args, binary)
+    ARITHM_OP_MEMreg_const(args, binary)
+    ARITHM_OP_MEMreg_reg(args, binary)

@@ -1,12 +1,11 @@
 from asm.utils import *
+from asm.binary import Word
 
 
-def DONE(args, add_words):
+def DONE(args, binary):
     if args[0] != "DONE":
         return
-    word = 1  # size in words
-    word += 255 << (3)  # opcode
 
     print(args, "DONE")
 
-    add_words(word)
+    binary.join(Word().size(1).opcode(255))

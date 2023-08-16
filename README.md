@@ -527,30 +527,32 @@ Data is stored at the next CPU cycle.
 - [x] Implement `SHL`
 - [x] Design `SHR`
 - [x] Implement `SHR`
-- [ ] Design `CMP`
-- [ ] Implement `CMP`
-- [ ] Design `JMP`
-- [ ] Implement `JMP`
-- [ ] Design `JE`
-- [ ] Implement `JE`
-- [ ] Design `JNE`
-- [ ] Implement `JNE`
-- [ ] Design `JL`
-- [ ] Implement `JL`
-- [ ] Design `JLT`
-- [ ] Implement `JLT`
-- [ ] Design `JG`
-- [ ] Implement `JG`
-- [ ] Design `JGT`
-- [ ] Implement `JGT`
-- [ ] Design `PUSH`
-- [ ] Implement `PUSH`
-- [ ] Design `POP`
-- [ ] Implement `POP`
-- [ ] Design `CALL`
-- [ ] Implement `CALL`
-- [ ] Design `RET`
-- [ ] Implement `RET`
+- [x] Design `CMP`
+- [x] Implement `CMP`
+- [x] Design `JMP`
+- [x] Implement `JMP`
+- [x] Design `JE`
+- [x] Implement `JE`
+- [x] Design `JNE`
+- [x] Implement `JNE`
+- [x] Design `JL`
+- [x] Implement `JL`
+- [x] Design `JLT`
+- [x] Implement `JLT`
+- [x] Design `JG`
+- [x] Implement `JG`
+- [x] Design `JGT`
+- [x] Implement `JGT`
+- [x] Design `PUSH`
+- [x] Implement `PUSH`
+- [x] Design `POP`
+- [x] Implement `POP`
+- [x] Design `CALL`
+- [x] Implement `CALL`
+- [x] Design `RET`
+- [x] Implement `RET`
+
+# I stopped working on the project a few months ago. Sad that I didn't get to implement a higher-level language. Anyway, the CPU is fully functional. Yey!
 
        
     

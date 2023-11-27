@@ -1,6 +1,6 @@
 # DWAK2 - An improved version of DWAK CPU architecture
 
-![image link](https://github.com/lis05/DWAK2/blob/main/DWAK2.svg)
+![image link](https://github.com/lis05/DWAK2/blob/main/download.svg)
 
 
 DWAK2 is 64 bit. Therefore, all instructions are 64bit, and one word is 64bits.
